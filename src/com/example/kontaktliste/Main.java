@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-
+// Kommer dette mde i push?! 
 public class Main extends Activity {
 
     @Override
