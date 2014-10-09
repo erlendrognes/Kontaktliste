@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Kontaktliste</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="new_contact">Legg til</string>
+    <string name="change_contact">Endre</string>
+    <string name="save_contact">Lagre</string>
+    
+    
+    <!--  Add contact strings -->
+    
+    <string name="addContact">Legg til kontakt</string>
+    <string name="firstname">Fornavn:</string>
+    <string name="lastname">Etternavn:</string>
+    <string name="phone">Telefon:</string>
+    <string name="birthday">Bursdag:</string>
+    <string name="saveContact">Lagre!</string>
+
+</resources>
