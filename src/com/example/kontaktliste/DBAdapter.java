@@ -1,10 +1,13 @@
 package com.example.kontaktliste;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.util.Log;
+
 
 public class DBAdapter {
 	Context context;
@@ -47,5 +50,14 @@ public class DBAdapter {
 			Log.d(TAG, "Oppdatert");
 			onCreate(db);
 		}
+	}
+	
+	public DBAdapter open() throws SQLException{
+		db = DBHelper.getWritableDatabase();
+		return this;
+	}
+	
+	public void insert(ContentValues cv){
+		db.insert(TABLE, null, cv);
 	}
 }

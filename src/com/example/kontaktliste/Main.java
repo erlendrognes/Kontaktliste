@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-// Kommer dette mde i push?! 
+
 public class Main extends Activity {
 
     @Override
@@ -25,6 +25,7 @@ public class Main extends Activity {
                 Intent intent = new Intent(Main.this,AddContact.class);
                 startActivity(intent);
             }
+            
         });
     }
 
