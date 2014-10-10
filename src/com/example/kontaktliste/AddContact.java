@@ -1,12 +1,45 @@
 package com.example.kontaktliste;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class AddContact extends Activity {
 	
 	protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
+        
+        Button btnSave = (Button) findViewById(R.id.saveContact);
+        
+        final EditText txtFirstname = (EditText) findViewById(R.id.firsname);
+        final EditText txtLastname = (EditText) findViewById(R.id.lastname);
+        final EditText txtPhone = (EditText) findViewById(R.id.phone);
+        final EditText txtBirthday = (EditText) findViewById(R.id.birthday);
+	
+        btnSave.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+            }
+        });
+	}
+	
+	public void onResume(){
+		
+	}
+	
+	public void onPause(){
+		
+	}
+	
+	
+	
+	public void addToDB(Contact contact){
+		
 	}
 }
