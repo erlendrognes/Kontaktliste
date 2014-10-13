@@ -18,6 +18,7 @@ public class DBAdapter {
 	static final String FIRSTNAME="firstname";
 	static final String LASTNAME="lastname";
 	static final String PHONE="phone";
+	static final String BIRTHDAY="birthday";
 	static final int DB_VERSION=2;
 	
 	private DatabaseHelper DBHelper;
@@ -39,7 +40,7 @@ public class DBAdapter {
 			String sql="create table " + TABLE + " ("
 			+ ID + " integer primary key autoincrement, " 
 			+ FIRSTNAME + " text, " + LASTNAME + " text, "
-			+ PHONE + " text);";
+			+ PHONE + " text " + BIRTHDAY + " text);";
 			Log.d(TAG, "oncreate sql:" + sql);
 			db.execSQL(sql);
 		}
