@@ -2,6 +2,7 @@ package com.example.kontaktliste;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -44,13 +45,15 @@ public class AddContact extends Activity {
             	cv.put(DBAdapter.PHONE, phone);
             	db.insert(cv);
             	Log.d("HEI", "Lagt inn i DB");
+            	Log.d("Navn", firstname + " Er lagt inn");
             	
             }
         });
 	}
 	
 	public void onResume(){
-		
+		super.onResume();
+		db.open();
 	}
 	
 	public void onPause(){
