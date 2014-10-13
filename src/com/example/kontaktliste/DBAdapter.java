@@ -19,7 +19,7 @@ public class DBAdapter {
 	static final String LASTNAME="lastname";
 	static final String PHONE="phone";
 	static final String BIRTHDAY="birthday";
-	static final int DB_VERSION=2;
+	static final int DB_VERSION=5;
 	
 	private DatabaseHelper DBHelper;
 	private SQLiteDatabase db;

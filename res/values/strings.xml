@@ -4,9 +4,13 @@
     <string name="app_name">Kontaktliste</string>
     <string name="action_settings">Settings</string>
     
+    
+    <string name="welcome_txt">Kontaktliste</string>
     <string name="new_contact">Legg til</string>
     <string name="change_contact">Endre</string>
     <string name="save_contact">Lagre</string>
+    <string name="list_contact">List alle kontakter</string>
+    <string name="change_sms">Endre felles bursdagsmelding</string>
     
     
     <!--  Add contact strings -->

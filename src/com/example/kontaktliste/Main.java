@@ -25,7 +25,13 @@ public class Main extends Activity {
                 Intent intent = new Intent(Main.this,AddContact.class);
                 startActivity(intent);
             }
-            
+        });
+        Button btnList = (Button) findViewById(R.id.btnList);
+        btnList.setOnClickListener(new OnClickListener(){
+        	public void onClick(View v){
+        		Intent i = new Intent(Main.this, ListContact.class);
+        		startActivity(i);
+        	}
         });
     }
 
@@ -43,7 +49,9 @@ public class Main extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.add) {
+        	Intent i = new Intent(Main.this, AddContact.class);
+        	startActivity(i);
             return true;
         }
         return super.onOptionsItemSelected(item);

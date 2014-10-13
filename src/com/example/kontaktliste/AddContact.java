@@ -25,8 +25,6 @@ public class AddContact extends Activity {
         final EditText txtFirstname = (EditText) findViewById(R.id.firsname);
         final EditText txtLastname = (EditText) findViewById(R.id.lastname);
         final EditText txtPhone = (EditText) findViewById(R.id.phone);
-        
-        // Legges inn når databasen er opprettet og fungerer
         //final EditText txtBirthday = (EditText) findViewById(R.id.birthday);
 	
         
@@ -39,14 +37,18 @@ public class AddContact extends Activity {
             	String firstname = txtFirstname.getText().toString();
             	String lastname = txtLastname.getText().toString();
             	String phone = txtPhone.getText().toString();
+            	//String birthday = txtBirthday.getText().toString();
             	ContentValues cv = new ContentValues(3);
             	cv.put(DBAdapter.FIRSTNAME, firstname);
             	cv.put(DBAdapter.LASTNAME, lastname);
             	cv.put(DBAdapter.PHONE, phone);
+            	//cv.put(DBAdapter.BIRTHDAY, birthday);
             	db.insert(cv);
             	Log.d("HEI", "Lagt inn i DB");
-            	Log.d("Navn", firstname + " Er lagt inn");
-            	
+            	Log.d("Navn", firstname + ", " + lastname + " Er lagt inn");
+            	Intent i = new Intent(AddContact.this, Main.class);
+            	finish();
+            	startActivity(i);
             }
         });
 	}
@@ -57,7 +59,7 @@ public class AddContact extends Activity {
 	}
 	
 	public void onPause(){
-		
+		super.onPause();
 	}
 	
 	
