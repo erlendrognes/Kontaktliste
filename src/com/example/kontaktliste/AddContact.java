@@ -43,7 +43,6 @@ public class AddContact extends Activity {
             	cv.put(DBAdapter.FIRSTNAME, firstname);
             	cv.put(DBAdapter.LASTNAME, lastname);
             	cv.put(DBAdapter.PHONE, phone);
-            	//hei
             	//cv.put(DBAdapter.BIRTHDAY, birthday);
             	db.insert(DBAdapter.CONTENT_URI, cv);
             	Log.d("HEI", "Lagt inn i DB");
