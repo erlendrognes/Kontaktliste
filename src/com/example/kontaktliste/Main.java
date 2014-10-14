@@ -26,13 +26,6 @@ public class Main extends Activity {
                 startActivity(intent);
             }
         });
-        Button btnList = (Button) findViewById(R.id.btnList);
-        btnList.setOnClickListener(new OnClickListener(){
-        	public void onClick(View v){
-        		Intent i = new Intent(Main.this, ListContact.class);
-        		startActivity(i);
-        	}
-        });
     }
 
 
