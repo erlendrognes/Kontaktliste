@@ -17,8 +17,8 @@ public class Main extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        
-        Button btnSpraak = (Button) findViewById(R.id.add);
-        btnSpraak.setOnClickListener(new OnClickListener() {
+        Button btnAdd = (Button) findViewById(R.id.add);
+        btnAdd.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -26,6 +26,16 @@ public class Main extends Activity {
                 startActivity(intent);
             }
         });
+        
+        Button btnList = (Button) findViewById(R.id.btnList);
+        btnList.setOnClickListener(new OnClickListener(){
+        	
+        	public void onClick(View v){
+	        	Intent i = new Intent(Main.this, ListContacts.class);
+	        	startActivity(i);
+        	}
+        });
+        
     }
 
 

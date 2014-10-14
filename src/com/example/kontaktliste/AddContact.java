@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddContact extends Activity {
 	
@@ -18,7 +19,7 @@ public class AddContact extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
         db = new DBAdapter(this);
-        db.open();
+        //db.open();
         
         Button btnSave = (Button) findViewById(R.id.saveContact);
         
@@ -32,7 +33,7 @@ public class AddContact extends Activity {
         
         btnSave.setOnClickListener(new OnClickListener() {
 
-            @Override
+            @Override  
             public void onClick(View v) {
             	String firstname = txtFirstname.getText().toString();
             	String lastname = txtLastname.getText().toString();
@@ -42,26 +43,18 @@ public class AddContact extends Activity {
             	cv.put(DBAdapter.FIRSTNAME, firstname);
             	cv.put(DBAdapter.LASTNAME, lastname);
             	cv.put(DBAdapter.PHONE, phone);
+            	//hei
             	//cv.put(DBAdapter.BIRTHDAY, birthday);
-            	db.insert(cv);
+            	db.insert(DBAdapter.CONTENT_URI, cv);
             	Log.d("HEI", "Lagt inn i DB");
             	Log.d("Navn", firstname + ", " + lastname + " Er lagt inn");
+            	Toast.makeText(getActionBar().getThemedContext(), firstname + " er lagt til", Toast.LENGTH_SHORT).show();
             	Intent i = new Intent(AddContact.this, Main.class);
             	finish();
             	startActivity(i);
             }
         });
 	}
-	
-	public void onResume(){
-		super.onResume();
-		db.open();
-	}
-	
-	public void onPause(){
-		super.onPause();
-	}
-	
 	
 	
 	public void addToDB(Contact contact){
