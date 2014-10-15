@@ -4,10 +4,10 @@ import android.app.Fragment;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,7 +35,7 @@ public class Contacts extends Fragment implements LoaderCallbacks<Cursor>{
 		super.onActivityCreated(savedInstanceState);
 		lm = getActivity().getLoaderManager();
 		String[] uiBindFrom = 
-			{DBAdapter.FIRSTNAME, DBAdapter.LASTNAME};
+			{DBAdapter.FIRSTNAME,DBAdapter.PHONE};
 		int[] uiBindTo = {android.R.id.text1,android.R.id.text2};
 		
 		mAdapter = new SimpleCursorAdapter(getActivity().getBaseContext(),
@@ -43,9 +43,15 @@ public class Contacts extends Fragment implements LoaderCallbacks<Cursor>{
 		
 		ListView l = (ListView) getActivity().findViewById(R.id.listview);
 		l.setAdapter(mAdapter);
+		
 		l.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
 				
+				//TODO: Onclick til riktig kontakt
+				
+				Intent i = new Intent(getActivity(), ContactDetails.class);
+				startActivity(i); 
+				//findViewById(R.layout.activity_contact_details);
 				//Toast er en liten tekst som dukker opp nederst på skjermen og forklarer
 				// kjekt å ha til "lagret"
 				Toast.makeText(getActivity().getBaseContext(), DBAdapter.FIRSTNAME + " Klikket", Toast.LENGTH_SHORT).show();
@@ -57,7 +63,7 @@ public class Contacts extends Fragment implements LoaderCallbacks<Cursor>{
 	
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1){
-		String [] projection = {DBAdapter.ID, DBAdapter.FIRSTNAME,DBAdapter.LASTNAME};
+		String [] projection = {DBAdapter.ID, DBAdapter.FIRSTNAME,DBAdapter.LASTNAME,DBAdapter.PHONE};
 		
 		cl = new CursorLoader(getActivity().getBaseContext(), DBAdapter.CONTENT_URI, projection, null, null, null);
 		
@@ -68,7 +74,7 @@ public class Contacts extends Fragment implements LoaderCallbacks<Cursor>{
 		if(mAdapter != null && cursor != null)
 			mAdapter.swapCursor(cursor);
 		else
-			Log.v(TAG, "OnLoadFinished: mAdapter is null");
+			Log.v(TAG, "OnLoadFinished: mAdapter is null" + mAdapter);
 	}
 	
 	public void onLoaderReset(Loader<Cursor> arg0){

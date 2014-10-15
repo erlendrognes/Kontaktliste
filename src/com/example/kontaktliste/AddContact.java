@@ -13,12 +13,12 @@ import android.widget.Toast;
 
 public class AddContact extends Activity {
 	
-	DBAdapter db;
+	//DBAdapter db;
 	
 	protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
-        db = new DBAdapter(this);
+        //db = new DBAdapter();
         //db.open();
         
         Button btnSave = (Button) findViewById(R.id.saveContact);
@@ -44,8 +44,7 @@ public class AddContact extends Activity {
             	cv.put(DBAdapter.LASTNAME, lastname);
             	cv.put(DBAdapter.PHONE, phone);
             	//cv.put(DBAdapter.BIRTHDAY, birthday);
-            	db.insert(DBAdapter.CONTENT_URI, cv);
-            	Log.d("HEI", "Lagt inn i DB");
+            	getContentResolver().insert(DBAdapter.CONTENT_URI, cv);
             	Log.d("Navn", firstname + ", " + lastname + " Er lagt inn");
             	Toast.makeText(getActionBar().getThemedContext(), firstname + " er lagt til", Toast.LENGTH_SHORT).show();
             	Intent i = new Intent(AddContact.this, Main.class);

@@ -16,37 +16,38 @@ import android.util.Log;
 public class DBAdapter extends ContentProvider{
 	Context context;
 	static final String TAG="DbHelper";
-	static final String DB_NAME="contacts.db";
-	static final String TABLE="persons";
-	static final String ID=BaseColumns._ID;
-	static final String FIRSTNAME="firstname";
-	static final String LASTNAME="lastname";
-	static final String PHONE="phone";
-	static final String BIRTHDAY="birthday";
-	static final int DB_VERSION=5;
+	private static final String DB_NAME="contacts.db";
+	private static final String TABLE="persons";
+	public static final String ID=BaseColumns._ID;
+	public static final String FIRSTNAME="firstname";
+	public static final String LASTNAME="lastname";
+	public static final String PHONE="phone";
+	public static final String BIRTHDAY="birthday";
+	private static final int DB_VERSION=5;
 	public static final String PROVIDER = "com.example.kontaktliste"; 
+	private static final int CONTACT=1;
+	private static final int MCONTACT=2;
 	
 	private DatabaseHelper DBHelper;
 	private SQLiteDatabase db;
 	
 	public static final Uri CONTENT_URI = 
 			Uri.parse("content://" + PROVIDER + "/contact"); 
-	
-	private static final int CONTACT=1;
-	private static final int MCONTACT=2; 
+	 
 	
 	private static final UriMatcher uriMatcher;
 	static{
 		uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 		uriMatcher.addURI(PROVIDER, "contact", MCONTACT);
-		uriMatcher.addURI(PROVIDER, "contact", CONTACT);
+		uriMatcher.addURI(PROVIDER, "contact/#", CONTACT);
 	}
 	
+	/*
 	public DBAdapter(Context ctx){
 		this.context = ctx;
 		DBHelper = new DatabaseHelper(context);
 	}
-	
+	*/
 	private static class DatabaseHelper extends SQLiteOpenHelper{
 		
 		DatabaseHelper(Context context){
