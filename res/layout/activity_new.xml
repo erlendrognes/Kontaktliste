@@ -15,92 +15,57 @@
         android:text="@string/addContact"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/lastnameView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/firstnameView"
-        android:layout_below="@+id/firsname"
-        android:layout_marginTop="20dp"
-        android:text="@string/lastname"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/firstnameView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="65dp"
-        android:layout_toLeftOf="@+id/textView1"
-        android:text="@string/firstname"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <EditText
         android:id="@+id/firsname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/firstnameView"
-        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@+id/lastname"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="32dp"
         android:ems="10"
+        android:hint="@string/firstname"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/lastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/phone"
+        android:layout_below="@+id/firsname"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/lastname"
         android:inputType="textPersonName" >
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/lastname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/lastnameView"
-        android:layout_alignParentRight="true"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/phoneView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/lastnameView"
-        android:layout_below="@+id/lastnameView"
-        android:layout_marginTop="21dp"
-        android:text="@string/phone"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
         android:id="@+id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/phoneView"
-        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:ems="10"
+        android:hint="@string/phone"
         android:inputType="phone" />
 
-    <TextView
-        android:id="@+id/birthdayView"
+    <Button
+        android:id="@+id/calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/phoneView"
-        android:layout_below="@+id/phoneView"
-        android:layout_marginTop="25dp"
-        android:text="@string/birthday"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/birthday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/birthdayView"
-        android:layout_alignParentRight="true"
-        android:ems="10"
-        android:inputType="date" />
+        android:layout_below="@+id/phone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/birthday" />
 
     <Button
         android:id="@+id/saveContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/birthday"
+        android:layout_below="@+id/calendar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="41dp"
         android:text="@string/saveContact" />
 
 </RelativeLayout>

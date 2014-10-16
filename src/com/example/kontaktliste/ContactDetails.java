@@ -2,8 +2,11 @@ package com.example.kontaktliste;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
+
 
 public class ContactDetails extends Activity{
 
@@ -11,25 +14,24 @@ public class ContactDetails extends Activity{
 	 protected void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_contact_details);
+	 
+	        //Button btnSave = (Button) findViewById(R.id.btnSave);
+	        Button btnChange = (Button) findViewById(R.id.btnChange);
+	        Button btnDelete = (Button) findViewById(R.id.btnDelete);
+	 
+	        
+			TextView usrFirstname = (TextView) findViewById(R.id.usrFirstname);
+	        TextView usrLastname = (TextView) findViewById(R.id.usrLastname);
+	        TextView usrPhone = (TextView) findViewById(R.id.usrPhone);
+	        TextView usrBirthday = (TextView) findViewById(R.id.usrBirthday);
+	        
+	        
+	        
+	 		usrFirstname.setText(DBAdapter.FIRSTNAME);
+	 		usrLastname.setText(DBAdapter.LASTNAME);
+	 		usrPhone.setText(DBAdapter.PHONE);
+	 		usrBirthday.setText(DBAdapter.BIRTHDAY);
+	        
 	 }
 	 
-
-	    @Override
-	    public boolean onCreateOptionsMenu(Menu menu) {
-	        // Inflate the menu; this adds items to the action bar if it is present.
-	        getMenuInflater().inflate(R.menu.main, menu);
-	        return true;
-	    }
-
-	    @Override
-	    public boolean onOptionsItemSelected(MenuItem item) {
-	        // Handle action bar item clicks here. The action bar will
-	        // automatically handle clicks on the Home/Up button, so long
-	        // as you specify a parent activity in AndroidManifest.xml.
-	        int id = item.getItemId();
-	        if (id == R.id.add) {
-	            return true;
-	        }
-	        return super.onOptionsItemSelected(item);
-	    }
 }

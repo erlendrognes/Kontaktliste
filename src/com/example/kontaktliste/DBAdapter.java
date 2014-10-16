@@ -23,13 +23,13 @@ public class DBAdapter extends ContentProvider{
 	public static final String LASTNAME="lastname";
 	public static final String PHONE="phone";
 	public static final String BIRTHDAY="birthday";
-	private static final int DB_VERSION=5;
+	private static final int DB_VERSION=8;
 	public static final String PROVIDER = "com.example.kontaktliste"; 
 	private static final int CONTACT=1;
 	private static final int MCONTACT=2;
 	
 	private DatabaseHelper DBHelper;
-	private SQLiteDatabase db;
+	private static SQLiteDatabase db;
 	
 	public static final Uri CONTENT_URI = 
 			Uri.parse("content://" + PROVIDER + "/contact"); 
@@ -42,12 +42,6 @@ public class DBAdapter extends ContentProvider{
 		uriMatcher.addURI(PROVIDER, "contact/#", CONTACT);
 	}
 	
-	/*
-	public DBAdapter(Context ctx){
-		this.context = ctx;
-		DBHelper = new DatabaseHelper(context);
-	}
-	*/
 	private static class DatabaseHelper extends SQLiteOpenHelper{
 		
 		DatabaseHelper(Context context){
@@ -71,11 +65,6 @@ public class DBAdapter extends ContentProvider{
 		}
 	}
 	
-	/*
-	public void insert(ContentValues cv){
-		db.insert(TABLE, null, cv);
-	}
-*/
 	@Override
 	public boolean onCreate() {
 	 	DBHelper=new DatabaseHelper(getContext());
@@ -104,7 +93,7 @@ public class DBAdapter extends ContentProvider{
 	public String getType(Uri uri) {
 		switch(uriMatcher.match(uri)){
 		case MCONTACT:return
-				"vnd.android.cursor.dir(vnd.example.kontaktliste";
+				"vnd.android.cursor.dir/vnd.example.kontaktliste";
 		case CONTACT:return
 				"vnd.android.cursor.dir/vnd.example.kontaktliste";
 		default:throw new
@@ -156,5 +145,20 @@ public class DBAdapter extends ContentProvider{
 			return 2;
 		}
 		return 0;
+	}
+	
+	public static Contact getContact(long id){
+		String[] projection = {DBAdapter.ID,DBAdapter.FIRSTNAME, DBAdapter.LASTNAME, DBAdapter.PHONE };
+		
+		Cursor cursor = db.query(TABLE,projection,ID + " = " + 
+				id,null, null,null, null);
+		    cursor.moveToFirst();
+		    
+		    Contact contact = new Contact(id);
+		    contact.setFirstname(cursor.getString(1));
+		    contact.setLastname(cursor.getString(2));
+		    contact.setPhone(cursor.getInt(3));
+		    return contact;
+		 
 	}
 }

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    tools:context=".ContactDetails" >
 
     <TextView
         android:id="@+id/firstname"
@@ -62,5 +65,50 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="52dp"
         android:text="@string/change_contact" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnSave"
+        android:layout_alignBottom="@+id/btnSave"
+        android:layout_toRightOf="@+id/phone"
+        android:text="@string/delete_contact" />
+
+    <TextView
+        android:id="@+id/usrFirstname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/firstname"
+        android:layout_alignBottom="@+id/firstname"
+        android:layout_marginLeft="37dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/usrLastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/phone"
+        android:layout_alignLeft="@+id/usrFirstname"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/usrPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/phone"
+        android:layout_alignBottom="@+id/phone"
+        android:layout_alignRight="@+id/usrFirstname"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/usrBirthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignLeft="@+id/usrPhone"
+        android:text="" />
 
 </RelativeLayout>

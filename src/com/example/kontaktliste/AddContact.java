@@ -13,13 +13,10 @@ import android.widget.Toast;
 
 public class AddContact extends Activity {
 	
-	//DBAdapter db;
-	
 	protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
-        //db = new DBAdapter();
-        //db.open();
+
         
         Button btnSave = (Button) findViewById(R.id.saveContact);
         
@@ -52,10 +49,5 @@ public class AddContact extends Activity {
             	startActivity(i);
             }
         });
-	}
-	
-	
-	public void addToDB(Contact contact){
-		
 	}
 }

@@ -35,7 +35,7 @@ public class Main extends Activity {
 	        	startActivity(i);
         	}
         });
-        
+        //HEI
     }
 
 

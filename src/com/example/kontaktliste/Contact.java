@@ -2,7 +2,7 @@ package com.example.kontaktliste;
 
 public class Contact {
 	
-	private int id;
+	private long id;
 	private String firstname;
 	private String lastname;
 	private int phone;
@@ -23,7 +23,13 @@ public class Contact {
 	}
 
 
-	public Contact(int id, String firstname, String lastname, int phone,
+	public Contact(long id) {
+		super();
+		this.id = id;
+	}
+
+
+	public Contact(long id, String firstname, String lastname, int phone,
 			int birthday) {
 		super();
 		this.id = id;
@@ -34,12 +40,12 @@ public class Contact {
 	}
 
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

@@ -46,15 +46,15 @@ public class Contacts extends Fragment implements LoaderCallbacks<Cursor>{
 		
 		l.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
-				
 				//TODO: Onclick til riktig kontakt
 				
+				
+				Contact c = DBAdapter.getContact(arg3);
+				
+				Log.v("NAVN", c.getFirstname() + " " + c.getPhone() + " " + c.getLastname());
+				
 				Intent i = new Intent(getActivity(), ContactDetails.class);
-				startActivity(i); 
-				//findViewById(R.layout.activity_contact_details);
-				//Toast er en liten tekst som dukker opp nederst på skjermen og forklarer
-				// kjekt å ha til "lagret"
-				Toast.makeText(getActivity().getBaseContext(), DBAdapter.FIRSTNAME + " Klikket", Toast.LENGTH_SHORT).show();
+				startActivity(i);
 			}
 		});
 		 
