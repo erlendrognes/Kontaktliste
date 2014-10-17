@@ -1,5 +1,6 @@
 package com.example.kontaktliste;
 
+import com.example.kontaktliste.PickDate;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -17,6 +18,7 @@ public class AddContact extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
 
+        bindButtons();
         
         Button btnSave = (Button) findViewById(R.id.saveContact);
         
@@ -49,5 +51,17 @@ public class AddContact extends Activity {
             	startActivity(i);
             }
         });
+	}
+	
+	private void bindButtons(){
+		Button btnCal = (Button)findViewById(R.id.calendar);
+		btnCal.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(AddContact.this, PickDate.class);
+				startActivityForResult(intent, 0);;
+			}
+		});
 	}
 }
