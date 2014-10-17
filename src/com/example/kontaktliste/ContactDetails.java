@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,13 +18,13 @@ public class ContactDetails extends Activity{
 	TextView lname;
 	TextView phone;
 	TextView bday;
-	ApplicationObject app;
+	AppObject app;
 	Contact c;
 	
 	 protected void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_contact_details);
-	        app = (ApplicationObject)getApplicationContext();
+	        app = (AppObject)getApplicationContext();
 	        c = app.getContact();
 	 
 	        //Button btnSave = (Button) findViewById(R.id.btnSave);
@@ -31,10 +32,13 @@ public class ContactDetails extends Activity{
 	        Button btnDelete = (Button) findViewById(R.id.btnDelete);
 	 
 	        
-			fname = (TextView) findViewById(R.id.usrFirstname);
-	        lname = (TextView) findViewById(R.id.usrLastname);
-	        phone = (TextView) findViewById(R.id.usrPhone);
-	        bday = (TextView) findViewById(R.id.usrBirthday);
+			fname = (EditText) findViewById(R.id.editFirstName);
+			fname.setText(c.getFirstname());
+	        lname = (EditText) findViewById(R.id.editLastName);
+	        lname.setText(c.getLastname());
+	        phone = (EditText) findViewById(R.id.editPhone);
+	        phone.setText(c.getPhone());
+	        //bday = (EditText) findViewById(R.id.editBday);
 	        
 	 }
 	 
@@ -42,23 +46,26 @@ public class ContactDetails extends Activity{
 		 String firstname = output(fname.getText().toString(), c.getFirstname());
 		 String lastname = output(lname.getText().toString(), c.getLastname());
 		 String cellphone = output(phone.getText().toString(), c.getPhone());
-		 String birthday = output(bday.getText().toString(), c.getBirthday());
+		// String birthday = output(bday.getText().toString(), c.getBirthday());
 		 
 		 c.setFirstname(firstname);
 		 c.setLastname(lastname);
 		 c.setPhone(cellphone);
-		 c.setBirthday(birthday);
+		 //c.setBirthday(birthday);
 		 
 		 
 		 ContentValues cv = new ContentValues(3);
 		 cv.put(DBAdapter.FIRSTNAME, firstname);
 		 cv.put(DBAdapter.LASTNAME, lastname);
 		 cv.put(DBAdapter.PHONE, cellphone);
-		 cv.put(DBAdapter.BIRTHDAY, birthday);
+		// cv.put(DBAdapter.BIRTHDAY, birthday);
 		 
 		 Boolean passed = DBAdapter.update(c.getId(), cv);
 		 if(passed){
 			 Toast.makeText(getBaseContext(), firstname + " er endret", Toast.LENGTH_SHORT).show();
+			 Intent i = new Intent(ContactDetails.this, Main.class);
+			 finish();
+			 startActivity(i);
 		 }
 		 else
 			 Toast.makeText(getBaseContext(), firstname + " ble ikke endret", Toast.LENGTH_SHORT).show();

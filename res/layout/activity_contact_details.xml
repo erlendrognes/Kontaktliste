@@ -6,109 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".ContactDetails" >
 
-    <TextView
-        android:id="@+id/firstname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/lastname"
-        android:layout_marginTop="38dp"
-        android:text="@string/firstname"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/lastname"
-        android:layout_below="@+id/lastname"
-        android:layout_marginTop="14dp"
-        android:text="@string/phone"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/lastname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/firstname"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="14dp"
-        android:text="@string/lastname"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/birthday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/firstname"
-        android:layout_below="@+id/phone"
-        android:layout_marginTop="15dp"
-        android:text="@string/birthday"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/birthday"
-        android:layout_below="@+id/birthday"
-        android:layout_marginTop="88dp"
-        android:text="@string/save_contact" />
-
     <Button
         android:id="@+id/btnChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnSave"
-        android:layout_alignBottom="@+id/btnSave"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="52dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editPhone"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="82dp"
+        android:onClick="changeCon"
         android:text="@string/change_contact" />
 
     <Button
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnSave"
-        android:layout_alignBottom="@+id/btnSave"
-        android:layout_toRightOf="@+id/phone"
+        android:layout_alignBottom="@+id/btnChange"
+        android:layout_alignRight="@+id/editPhone"
+        android:onClick="delCon"
         android:text="@string/delete_contact" />
 
-    <TextView
-        android:id="@+id/usrFirstname"
+    <EditText
+        android:id="@+id/editLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/firstname"
-        android:layout_alignBottom="@+id/firstname"
-        android:layout_marginLeft="37dp"
-        android:layout_toRightOf="@+id/birthday"
-        android:text="" />
+        android:layout_alignLeft="@+id/editFirstName"
+        android:layout_below="@+id/editFirstName"
+        android:layout_marginTop="14dp"
+        android:ems="10" />
 
-    <TextView
-        android:id="@+id/usrLastname"
+    <EditText
+        android:id="@+id/editFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/phone"
-        android:layout_alignLeft="@+id/usrFirstname"
-        android:text="" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:ems="10" />
 
-    <TextView
-        android:id="@+id/usrPhone"
+    <EditText
+        android:id="@+id/editPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/phone"
-        android:layout_alignBottom="@+id/phone"
-        android:layout_alignRight="@+id/usrFirstname"
-        android:text="" />
+        android:layout_alignLeft="@+id/editLastName"
+        android:layout_below="@+id/editLastName"
+        android:layout_marginTop="16dp"
+        android:ems="10" >
 
-    <TextView
-        android:id="@+id/usrBirthday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/birthday"
-        android:layout_alignBottom="@+id/birthday"
-        android:layout_alignLeft="@+id/usrPhone"
-        android:text="" />
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

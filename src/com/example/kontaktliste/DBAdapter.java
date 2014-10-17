@@ -14,7 +14,7 @@ import android.util.Log;
 
 
 public class DBAdapter extends ContentProvider{
-	Context context;
+
 	static final String TAG="DbHelper";
 	private static final String DB_NAME="contacts.db";
 	private static final String TABLE="persons";

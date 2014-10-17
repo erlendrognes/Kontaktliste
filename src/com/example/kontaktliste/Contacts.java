@@ -18,7 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class Contacts extends Fragment implements LoaderCallbacks<Cursor>{
-	DBAdapter db;	
+	
 	LoaderManager lm;
 	CursorLoader cl;
 	SimpleCursorAdapter mAdapter;
@@ -30,26 +30,20 @@ public class Contacts extends Fragment implements LoaderCallbacks<Cursor>{
 		return inflater.inflate(R.layout.list, container, false);
 	}
 	
+	@Override
 	public void onActivityCreated(Bundle savedInstanceState){
 		super.onActivityCreated(savedInstanceState);
 		lm = getActivity().getLoaderManager();
-		String[] uiBindFrom = 
-			{DBAdapter.FIRSTNAME,DBAdapter.PHONE};
+		String[] uiBindFrom = {DBAdapter.FIRSTNAME,DBAdapter.PHONE};
 		int[] uiBindTo = {android.R.id.text1,android.R.id.text2};
-		
-		mAdapter = new SimpleCursorAdapter(getActivity().getBaseContext(),
-				android.R.layout.simple_list_item_2, null, uiBindFrom, uiBindTo, 0);
-		
+		mAdapter = new SimpleCursorAdapter(getActivity().getBaseContext(), android.R.layout.simple_list_item_2, null, uiBindFrom, uiBindTo, 0);
 		ListView l = (ListView) getActivity().findViewById(R.id.listview);
 		l.setAdapter(mAdapter);
-		
 		l.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
 				
 				Contact c = DBAdapter.getContact(arg3);
-				//TODO fjern log når fungerer
-				Log.v("NAVN", c.getFirstname() + " " + c.getPhone() + " " + c.getLastname());
-				ApplicationObject a = (ApplicationObject) getActivity().getApplicationContext();
+				AppObject a = (AppObject) getActivity().getApplicationContext();
 				a.setContact(c);
 				
 				//TODO fjern log når fungerer
@@ -65,7 +59,7 @@ public class Contacts extends Fragment implements LoaderCallbacks<Cursor>{
 	
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1){
-		String [] projection = {DBAdapter.ID, DBAdapter.FIRSTNAME,DBAdapter.LASTNAME,DBAdapter.PHONE};
+		String [] projection = {DBAdapter.ID, DBAdapter.FIRSTNAME,DBAdapter.LASTNAME,DBAdapter.PHONE, DBAdapter.BIRTHDAY};
 		
 		cl = new CursorLoader(getActivity().getBaseContext(), DBAdapter.CONTENT_URI, projection, null, null, null);
 		

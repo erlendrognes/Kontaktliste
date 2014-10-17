@@ -4,20 +4,20 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-public class ApplicationObject extends Application{
+public class AppObject extends Application{
 	
 	
-	private static ApplicationObject ao;
+	private static AppObject a;
 	private String message;
 	private Contact contact;
 	
-	public ApplicationObject getInstance(){
-		return ao;
+	public AppObject getInstance(){
+		return a;
 	}
 	
 	public void onCreate(){
 		super.onCreate();
-		ao = this;
+		a = this;
 		
 		SharedPreferences save = PreferenceManager.getDefaultSharedPreferences(this);
 		message = save.getString("Message", "Gratulerer med dagen");
@@ -42,7 +42,7 @@ public class ApplicationObject extends Application{
 	
 	
 	public void finish(){
-		SharedPreferences save = PreferenceManager.getDefaultSharedPreferences(ApplicationObject.this);
+		SharedPreferences save = PreferenceManager.getDefaultSharedPreferences(AppObject.this);
 		SharedPreferences.Editor editor = save.edit();
 		
 		editor.putString("Message", message);
