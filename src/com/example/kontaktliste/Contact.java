@@ -5,11 +5,11 @@ public class Contact {
 	private long id;
 	private String firstname;
 	private String lastname;
-	private int phone;
-	private int birthday;
+	private String phone;
+	private String birthday;
 	
 	
-	public Contact(String firstname, String lastname, int phone, int birthday) {
+	public Contact(String firstname, String lastname, String phone, String birthday) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -29,8 +29,8 @@ public class Contact {
 	}
 
 
-	public Contact(long id, String firstname, String lastname, int phone,
-			int birthday) {
+	public Contact(long id, String firstname, String lastname, String phone,
+			String birthday) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -70,22 +70,22 @@ public class Contact {
 	}
 
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
 
-	public int getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
 
-	public void setBirthday(int birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}	
 }

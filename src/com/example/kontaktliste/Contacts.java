@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class Contacts extends Fragment implements LoaderCallbacks<Cursor>{
 	DBAdapter db;	
@@ -46,11 +45,14 @@ public class Contacts extends Fragment implements LoaderCallbacks<Cursor>{
 		
 		l.setOnItemClickListener(new OnItemClickListener(){
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
-				//TODO: Onclick til riktig kontakt
-				
 				
 				Contact c = DBAdapter.getContact(arg3);
+				//TODO fjern log når fungerer
+				Log.v("NAVN", c.getFirstname() + " " + c.getPhone() + " " + c.getLastname());
+				ApplicationObject a = (ApplicationObject) getActivity().getApplicationContext();
+				a.setContact(c);
 				
+				//TODO fjern log når fungerer
 				Log.v("NAVN", c.getFirstname() + " " + c.getPhone() + " " + c.getLastname());
 				
 				Intent i = new Intent(getActivity(), ContactDetails.class);

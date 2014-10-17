@@ -130,6 +130,16 @@ public class DBAdapter extends ContentProvider{
 		}
 		return 0;
 	}
+	
+	public static Boolean delete(long id){
+		try{
+			db.delete(TABLE, ID + " = " + id, null);
+			return true;
+		}
+		catch(Exception e){
+			return false;
+		}
+	}
 
 	@Override
 	public int update(Uri uri, ContentValues values, String selection,
@@ -147,6 +157,16 @@ public class DBAdapter extends ContentProvider{
 		return 0;
 	}
 	
+	public static Boolean update(long id, ContentValues v){
+		try{
+			db.update(TABLE, v, ID + " = " + id, null);
+			return true;
+		}
+		catch(Exception e){
+			return false;
+		}
+	}
+	
 	public static Contact getContact(long id){
 		String[] projection = {DBAdapter.ID,DBAdapter.FIRSTNAME, DBAdapter.LASTNAME, DBAdapter.PHONE };
 		
@@ -157,7 +177,7 @@ public class DBAdapter extends ContentProvider{
 		    Contact contact = new Contact(id);
 		    contact.setFirstname(cursor.getString(1));
 		    contact.setLastname(cursor.getString(2));
-		    contact.setPhone(cursor.getInt(3));
+		    contact.setPhone(cursor.getString(3));
 		    return contact;
 		 
 	}
