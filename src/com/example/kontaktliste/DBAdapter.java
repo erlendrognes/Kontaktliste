@@ -1,5 +1,9 @@
 package com.example.kontaktliste;
 
+import com.example.kontaktliste.Contact;
+
+import java.util.ArrayList;
+
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -23,7 +27,7 @@ public class DBAdapter extends ContentProvider{
 	public static final String LASTNAME="lastname";
 	public static final String PHONE="phone";
 	public static final String BIRTHDAY="birthday";
-	private static final int DB_VERSION=8;
+	private static final int DB_VERSION=11;
 	public static final String PROVIDER = "com.example.kontaktliste"; 
 	private static final int CONTACT=1;
 	private static final int MCONTACT=2;
@@ -52,7 +56,7 @@ public class DBAdapter extends ContentProvider{
 			String sql="create table " + TABLE + " ("
 			+ ID + " integer primary key autoincrement, " 
 			+ FIRSTNAME + " text, " + LASTNAME + " text, "
-			+ PHONE + " text " + BIRTHDAY + " text);";
+			+ PHONE + " text, " + BIRTHDAY + " text);";
 			Log.d(TAG, "oncreate sql:" + sql);
 			db.execSQL(sql);
 		}
@@ -87,6 +91,36 @@ public class DBAdapter extends ContentProvider{
 	 		cur=db.query(TABLE,null, null, null, null, null, null);
 		 	return cur; 
 		}
+	}
+	
+	public ArrayList<Contact> getContactsByBirthday(String birthday) {
+		
+		db = DBHelper.getReadableDatabase();
+		ArrayList<Contact> celebrants = new ArrayList<Contact>();
+
+		Cursor cursor = db.query(TABLE, new String[] { FIRSTNAME, LASTNAME,
+				PHONE, BIRTHDAY }, BIRTHDAY + "=?",
+				new String[] { birthday }, null, null, null, null);
+
+		if (cursor.moveToFirst()) {
+			while (cursor.isAfterLast() == false) {
+				String firstname = cursor.getString(cursor
+						.getColumnIndex(FIRSTNAME));
+				String lastname = cursor.getString(cursor
+						.getColumnIndex(LASTNAME));
+				String phoneNumber = cursor.getString(cursor
+						.getColumnIndex(PHONE));
+				String bday = cursor.getString(cursor.getColumnIndex(BIRTHDAY));
+
+				Contact c = new Contact(firstname, lastname, phoneNumber, bday);
+				celebrants.add(c);
+				cursor.moveToNext();
+			}
+
+		}
+		cursor.close();
+		db.close();
+		return celebrants;
 	}
 
 	@Override
@@ -168,7 +202,7 @@ public class DBAdapter extends ContentProvider{
 	}
 	
 	public static Contact getContact(long id){
-		String[] projection = {DBAdapter.ID,DBAdapter.FIRSTNAME, DBAdapter.LASTNAME, DBAdapter.PHONE };
+		String[] projection = {DBAdapter.ID,DBAdapter.FIRSTNAME, DBAdapter.LASTNAME, DBAdapter.PHONE, DBAdapter.BIRTHDAY };
 		
 		Cursor cursor = db.query(TABLE,projection,ID + " = " + 
 				id,null, null,null, null);
@@ -178,6 +212,7 @@ public class DBAdapter extends ContentProvider{
 		    contact.setFirstname(cursor.getString(1));
 		    contact.setLastname(cursor.getString(2));
 		    contact.setPhone(cursor.getString(3));
+		    contact.setBirthday(cursor.getString(4));
 		    return contact;
 		 
 	}

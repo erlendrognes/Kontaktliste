@@ -45,8 +45,6 @@ public class Contacts extends Fragment implements LoaderCallbacks<Cursor>{
 				Contact c = DBAdapter.getContact(arg3);
 				AppObject a = (AppObject) getActivity().getApplicationContext();
 				a.setContact(c);
-				
-				//TODO fjern log når fungerer
 				Log.v("NAVN", c.getFirstname() + " " + c.getPhone() + " " + c.getLastname());
 				
 				Intent i = new Intent(getActivity(), ContactDetails.class);

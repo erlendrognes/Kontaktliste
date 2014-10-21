@@ -41,31 +41,34 @@
     </EditText>
 
     <EditText
+        android:id="@+id/birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/phone"
+        android:layout_below="@+id/phone"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:hint="@string/birthday"
+        android:inputType="date" />
+
+    <EditText
         android:id="@+id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/lastname"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="18dp"
         android:ems="10"
         android:hint="@string/phone"
         android:inputType="phone" />
 
     <Button
-        android:id="@+id/calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/phone"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:text="@string/birthday" />
-
-    <Button
         android:id="@+id/saveContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/calendar"
+        android:layout_below="@+id/birthday"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="28dp"
         android:text="@string/saveContact" />
 
 </RelativeLayout>

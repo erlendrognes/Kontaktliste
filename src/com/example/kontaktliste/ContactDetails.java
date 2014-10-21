@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,10 +26,6 @@ public class ContactDetails extends Activity{
 	        app = (AppObject)getApplicationContext();
 	        c = app.getContact();
 	 
-	        //Button btnSave = (Button) findViewById(R.id.btnSave);
-	        Button btnChange = (Button) findViewById(R.id.btnChange);
-	        Button btnDelete = (Button) findViewById(R.id.btnDelete);
-	 
 	        
 			fname = (EditText) findViewById(R.id.editFirstName);
 			fname.setText(c.getFirstname());
@@ -38,7 +33,8 @@ public class ContactDetails extends Activity{
 	        lname.setText(c.getLastname());
 	        phone = (EditText) findViewById(R.id.editPhone);
 	        phone.setText(c.getPhone());
-	        //bday = (EditText) findViewById(R.id.editBday);
+	        bday = (EditText) findViewById(R.id.editBirthday);
+	        bday.setText(c.getBirthday());
 	        
 	 }
 	 
@@ -46,19 +42,19 @@ public class ContactDetails extends Activity{
 		 String firstname = output(fname.getText().toString(), c.getFirstname());
 		 String lastname = output(lname.getText().toString(), c.getLastname());
 		 String cellphone = output(phone.getText().toString(), c.getPhone());
-		// String birthday = output(bday.getText().toString(), c.getBirthday());
+		 String birthday = output(bday.getText().toString(), c.getBirthday());
 		 
 		 c.setFirstname(firstname);
 		 c.setLastname(lastname);
 		 c.setPhone(cellphone);
-		 //c.setBirthday(birthday);
+		 c.setBirthday(birthday);
 		 
 		 
 		 ContentValues cv = new ContentValues(3);
 		 cv.put(DBAdapter.FIRSTNAME, firstname);
 		 cv.put(DBAdapter.LASTNAME, lastname);
 		 cv.put(DBAdapter.PHONE, cellphone);
-		// cv.put(DBAdapter.BIRTHDAY, birthday);
+		 cv.put(DBAdapter.BIRTHDAY, birthday);
 		 
 		 Boolean passed = DBAdapter.update(c.getId(), cv);
 		 if(passed){

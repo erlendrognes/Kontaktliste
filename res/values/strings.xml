@@ -17,10 +17,16 @@
     <!--  Add contact strings -->
     
     <string name="addContact">Legg til kontakt</string>
-    <string name="firstname">Fornavn:</string>
-    <string name="lastname">Etternavn:</string>
-    <string name="phone">Telefon:</string>
-    <string name="birthday">Bursdag:</string>
+    <string name="firstname">Fornavn</string>
+    <string name="lastname">Etternavn</string>
+    <string name="phone">Telefon</string>
+    <string name="birthday">dd/mm/åååå</string>
     <string name="saveContact">Lagre!</string>
+    
+    <!-- Delete -->
+    
+    <string name="confirmDelete">Slette?</string>
+    <string name="yes">JA</string>
+    <string name="no">NEI</string>
 
 </resources>

@@ -1,6 +1,5 @@
 package com.example.kontaktliste;
 
-import com.example.kontaktliste.PickDate;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -17,32 +16,24 @@ public class AddContact extends Activity {
 	protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
-
-        bindButtons();
-        
         Button btnSave = (Button) findViewById(R.id.saveContact);
-        
         final EditText txtFirstname = (EditText) findViewById(R.id.firsname);
         final EditText txtLastname = (EditText) findViewById(R.id.lastname);
         final EditText txtPhone = (EditText) findViewById(R.id.phone);
-        //final EditText txtBirthday = (EditText) findViewById(R.id.birthday);
-	
-        
-        
+        final EditText txtBirthday = (EditText) findViewById(R.id.birthday);
         
         btnSave.setOnClickListener(new OnClickListener() {
-
             @Override  
             public void onClick(View v) {
             	String firstname = txtFirstname.getText().toString();
             	String lastname = txtLastname.getText().toString();
             	String phone = txtPhone.getText().toString();
-            	//String birthday = txtBirthday.getText().toString();
+            	String birthday = txtBirthday.getText().toString();
             	ContentValues cv = new ContentValues(3);
             	cv.put(DBAdapter.FIRSTNAME, firstname);
             	cv.put(DBAdapter.LASTNAME, lastname);
             	cv.put(DBAdapter.PHONE, phone);
-            	//cv.put(DBAdapter.BIRTHDAY, birthday);
+            	cv.put(DBAdapter.BIRTHDAY, birthday);
             	getContentResolver().insert(DBAdapter.CONTENT_URI, cv);
             	Log.d("Navn", firstname + ", " + lastname + " Er lagt inn");
             	Toast.makeText(getActionBar().getThemedContext(), firstname + " er lagt til", Toast.LENGTH_SHORT).show();
@@ -51,17 +42,5 @@ public class AddContact extends Activity {
             	startActivity(i);
             }
         });
-	}
-	
-	private void bindButtons(){
-		Button btnCal = (Button)findViewById(R.id.calendar);
-		btnCal.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(AddContact.this, PickDate.class);
-				startActivityForResult(intent, 0);;
-			}
-		});
 	}
 }
