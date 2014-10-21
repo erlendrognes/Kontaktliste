@@ -43,7 +43,7 @@
       	    android:label="@string/app_name">
       	</activity>
       	<activity
-      	    android:name=".PickDate"
+      	    android:name=".DatePicker"
       	    android:label="@string/app_name">
       	</activity>
       		<provider

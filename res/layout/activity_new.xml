@@ -16,7 +16,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/firsname"
+        android:id="@+id/firstname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/lastname"
@@ -24,32 +24,9 @@
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="@string/firstname"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/lastname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/phone"
-        android:layout_below="@+id/firsname"
-        android:layout_marginTop="19dp"
-        android:ems="10"
-        android:hint="@string/lastname"
         android:inputType="textPersonName" >
-
         <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/birthday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/phone"
-        android:layout_below="@+id/phone"
-        android:layout_marginTop="22dp"
-        android:ems="10"
-        android:hint="@string/birthday"
-        android:inputType="date" />
+        </EditText>
 
     <EditText
         android:id="@+id/phone"
@@ -66,9 +43,36 @@
         android:id="@+id/saveContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/birthday"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
+        android:layout_marginBottom="81dp"
         android:text="@string/saveContact" />
+
+    <Button
+        android:id="@+id/btnBday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/saveContact"
+        android:layout_alignRight="@+id/textView1"
+        android:text="@string/birthday" />
+
+    <EditText
+        android:id="@+id/lastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/phone"
+        android:layout_below="@+id/firstname"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/lastname"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnBday"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

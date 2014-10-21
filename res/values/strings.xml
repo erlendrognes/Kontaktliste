@@ -20,8 +20,9 @@
     <string name="firstname">Fornavn</string>
     <string name="lastname">Etternavn</string>
     <string name="phone">Telefon</string>
-    <string name="birthday">dd/mm/åååå</string>
+    <string name="birthday">Velg fødselsdag</string>
     <string name="saveContact">Lagre!</string>
+    <string name="newBday">Endre bursdag</string>
     
     <!-- Delete -->
     

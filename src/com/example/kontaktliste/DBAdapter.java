@@ -1,6 +1,6 @@
 package com.example.kontaktliste;
 
-import com.example.kontaktliste.Contact;
+
 
 import java.util.ArrayList;
 
@@ -27,7 +27,7 @@ public class DBAdapter extends ContentProvider{
 	public static final String LASTNAME="lastname";
 	public static final String PHONE="phone";
 	public static final String BIRTHDAY="birthday";
-	private static final int DB_VERSION=11;
+	private static final int DB_VERSION=12;
 	public static final String PROVIDER = "com.example.kontaktliste"; 
 	private static final int CONTACT=1;
 	private static final int MCONTACT=2;
@@ -56,7 +56,7 @@ public class DBAdapter extends ContentProvider{
 			String sql="create table " + TABLE + " ("
 			+ ID + " integer primary key autoincrement, " 
 			+ FIRSTNAME + " text, " + LASTNAME + " text, "
-			+ PHONE + " text, " + BIRTHDAY + " text);";
+			+ PHONE + " text, " + BIRTHDAY + " date);";
 			Log.d(TAG, "oncreate sql:" + sql);
 			db.execSQL(sql);
 		}
