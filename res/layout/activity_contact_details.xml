@@ -6,26 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ContactDetails" >
 
-    <Button
-        android:id="@+id/btnChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editPhone"
-        android:layout_marginLeft="34dp"
-        android:layout_marginTop="82dp"
-        android:onClick="changeCon"
-        android:text="@string/change_contact" />
-
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btnChange"
-        android:layout_alignRight="@+id/editPhone"
-        android:onClick="delCon"
-        android:text="@string/delete_contact" />
-
     <EditText
         android:id="@+id/editLastName"
         android:layout_width="wrap_content"
@@ -56,13 +36,41 @@
         <requestFocus />
     </EditText>
 
-    <EditText
-        android:id="@+id/editBirthday"
+    <Button
+        android:id="@+id/btnChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editPhone"
-        android:layout_below="@+id/editPhone"
-        android:layout_marginTop="14dp"
-        android:ems="10" />
+        android:layout_below="@+id/newBday"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:onClick="changeCon"
+        android:text="@string/change_contact" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:onClick="delCon"
+        android:text="@string/delete_contact" />
+
+    <Button
+        android:id="@+id/newBday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editBday"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/newBday" />
+
+    <TextView
+        android:id="@+id/editBday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btnDelete"
+        android:layout_centerVertical="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,17 +28,40 @@ public class ContactDetails extends Activity{
 	        app = (AppObject)getApplicationContext();
 	        c = app.getContact();
 	 
-	        
+	        changeBday();
 			fname = (EditText) findViewById(R.id.editFirstName);
 			fname.setText(c.getFirstname());
 	        lname = (EditText) findViewById(R.id.editLastName);
 	        lname.setText(c.getLastname());
 	        phone = (EditText) findViewById(R.id.editPhone);
 	        phone.setText(c.getPhone());
-	        bday = (EditText) findViewById(R.id.editBirthday);
+	        bday = (TextView) findViewById(R.id.editBday);
 	        bday.setText(c.getBirthday());
 	        
 	 }
+	 
+	 private void changeBday(){
+		 Button cal = (Button) findViewById(R.id.newBday);
+		 cal.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(ContactDetails.this, DatePicker.class);
+				startActivityForResult(i, 0);
+			}
+		 });
+	 }
+	 
+	 public void onActivityResult(int request, int result, Intent data){
+			switch(request){
+			case 0:
+				if(result == RESULT_OK){
+					Bundle bundle = data.getExtras();
+					bday.setText(bundle.getString("selectedDate"));
+					break;
+				}
+			}
+		}
 	 
 	 public void changeCon(View v){
 		 String firstname = output(fname.getText().toString(), c.getFirstname());
