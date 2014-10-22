@@ -3,6 +3,7 @@ package com.example.kontaktliste;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,10 +13,17 @@ import android.widget.Button;
 
 public class Main extends Activity {
 
+	private static boolean serviceRun = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        if(!serviceRun){
+        	Log.v("dsofjsdfijsdof", "Kjører service");
+        	doStartService();
+        	serviceRun = true;
+        }
        
         Button btnAdd = (Button) findViewById(R.id.add);
         btnAdd.setOnClickListener(new OnClickListener() {
@@ -35,6 +43,12 @@ public class Main extends Activity {
 	        	startActivity(i);
         	}
         });
+    }
+    
+    private void doStartService(){
+    	Intent service = new Intent();
+    	service.setAction("com.example.kontaktliste.trigger");
+    	sendBroadcast(service);
     }
 
 

@@ -47,6 +47,9 @@ public class AddContact extends Activity {
 			@Override
 			public void onClick(View v) {
 				saveContact();	
+				Intent i = new Intent(AddContact.this, Main.class);
+				startActivity(i);
+				finish();
 			}
 		});
 	}
@@ -95,7 +98,7 @@ public class AddContact extends Activity {
 		
 		getContentResolver().insert(DBAdapter.CONTENT_URI, cv);
     	clearInput();
-    	Toast.makeText(getActionBar().getThemedContext(), "Added", Toast.LENGTH_SHORT).show();
+    	Toast.makeText(getActionBar().getThemedContext(), firstname + " er lagret!", Toast.LENGTH_SHORT).show();
 	}
 
 }

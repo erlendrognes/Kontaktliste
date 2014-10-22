@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 
 @SuppressLint("SimpleDateFormat")
 public class BdayCheck extends Service {
@@ -15,7 +16,9 @@ public class BdayCheck extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		Log.v("INN her?", "PIKK");
 		SimpleDateFormat df = new SimpleDateFormat("dd MM YYYY");
+		Log.v("INN her? 2", "PIKK");
 		String today = df.format(Calendar.getInstance().getTime()).toString();
 
 		ArrayList<Contact> celebrants = dbAdapter

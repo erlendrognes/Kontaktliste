@@ -8,6 +8,8 @@
 	<uses-permission 
 	    android:name="android.permission.WRITE_EXTERNAL_STORAGE">
 	</uses-permission>
+	<uses-permission android:name="android.permission.SEND_SMS" />
+	<uses-permission android:name="android.permission.WRITE_SMS" />
 	<permission
 	    android:name="com.example.kontaktliste.permission"/>
 
@@ -46,15 +48,36 @@
       	    android:name=".DatePicker"
       	    android:label="@string/app_name">
       	</activity>
+      	<activity 
+      	    android:name=".NoteReceive"
+      	    android:label="@string/app_name">
+      	</activity>
+      	<activity 
+      	    android:name=".NoteCheck"
+      	    android:label="@string/app_name">
+      	    </activity>
+      	
+      	<service
+      	    android:name=".BdayChecker"
+      	    android:enabled="true"
+      	    android:icon="@drawable/ic_launcher"
+      	    android:label="@string/birthday">
+      	</service>
+      	
+      	<receiver
+      	    android:name=".MyService">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETET"/>
+                <action android:name="com.example.kontaktliste.trigger"/>
+            </intent-filter>
+      	</receiver>
       		<provider
 				android:name="com.example.kontaktliste.DBAdapter"
 				android:authorities="com.example.kontaktliste"
 				android:enabled="true"
 				android:exported="true"	
-				android:readPermission=
-				"com.example.kontaktliste.permission"	
-				android:writePermission=
-				"com.example.kontaktliste.permission">
+				android:readPermission="com.example.kontaktliste.permission"	
+				android:writePermission="com.example.kontaktliste.permission">
 			</provider>
     </application>
 </manifest>
