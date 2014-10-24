@@ -1,4 +1,4 @@
-package com.example.kontaktliste;
+/*package com.example.kontaktliste;
 
 import java.util.Calendar;
 
@@ -35,3 +35,4 @@ public class MyTimePicker extends DialogFragment implements OnTimeSetListener{
 	}
 
 }
+*/
