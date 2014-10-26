@@ -25,7 +25,7 @@ public class SettPeriodiskService extends Service {
 		
 		AlarmManager alarm = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 		
-		alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 60*1000, pintent);
+		alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 40*1000, pintent);
 		
 		return super.onStartCommand(intent, flags, startId);
 	}
